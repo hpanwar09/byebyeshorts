@@ -3,31 +3,18 @@
   const HIDDEN_CLASS = "byebyeshorts-hidden";
   const PROCESSED_ATTR = "data-byebyeshorts";
 
-  // All known selectors for YouTube Shorts elements
   const SHORTS_SELECTORS = [
-    // Homepage shorts shelf
     "ytd-rich-shelf-renderer[is-shorts]",
     "ytd-reel-shelf-renderer",
-
-    // Sidebar navigation link
     'ytd-guide-entry-renderer a[title="Shorts"]',
     'ytd-mini-guide-entry-renderer a[title="Shorts"]',
-
-    // Search results
     "ytd-reel-shelf-renderer[is-search]",
-
-    // Shorts tab on channel pages
     'yt-tab-shape[tab-title="Shorts"]',
     'tp-yt-paper-tab:has(> div:contains("Shorts"))',
-
-    // Shorts badges and links in video renderers
     'a[href="/shorts"]',
-
-    // Notification panel shorts
     'ytd-notification-renderer a[href*="/shorts/"]',
   ];
 
-  // Selectors for individual video items that link to /shorts/
   const SHORTS_LINK_SELECTORS = [
     "ytd-grid-video-renderer",
     "ytd-video-renderer",
@@ -60,11 +47,9 @@
   function removeShorts() {
     if (!enabled) return;
 
-    // Hide known Shorts sections
     for (const selector of SHORTS_SELECTORS) {
       try {
         document.querySelectorAll(selector).forEach((el) => {
-          // Walk up to hide the parent container for sidebar items
           if (el.closest("ytd-guide-entry-renderer")) {
             hideElement(el.closest("ytd-guide-entry-renderer"));
           } else if (el.closest("ytd-mini-guide-entry-renderer")) {
@@ -73,12 +58,9 @@
             hideElement(el);
           }
         });
-      } catch (_) {
-        // Selector may not be valid in all contexts, skip
-      }
+      } catch (_) {}
     }
 
-    // Hide individual video items that link to /shorts/
     for (const selector of SHORTS_LINK_SELECTORS) {
       document.querySelectorAll(selector).forEach((el) => {
         if (isShortsThumbnailLink(el)) {
@@ -126,7 +108,6 @@
 
   function init() {
     chrome.storage.local.get(ENABLED_KEY, (result) => {
-      // Default to enabled
       enabled = result[ENABLED_KEY] !== false;
 
       if (enabled) {
@@ -135,7 +116,6 @@
       }
     });
 
-    // Listen for toggle changes from popup
     chrome.storage.onChanged.addListener((changes, area) => {
       if (area !== "local" || !changes[ENABLED_KEY]) return;
 
@@ -151,7 +131,6 @@
     });
   }
 
-  // YouTube is an SPA — handle navigation
   document.addEventListener("yt-navigate-finish", () => {
     if (enabled) removeShorts();
   });

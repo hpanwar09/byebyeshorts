@@ -1,33 +1,17 @@
-/* ByeByeShorts — Hide YouTube Shorts elements */
-
 .byebyeshorts-hidden {
   display: none !important;
 }
 
-/*
- * CSS-only fallback: hides Shorts even before JS runs.
- * The content script adds/removes .byebyeshorts-disabled on <html>
- * when the user toggles off — these rules won't apply then.
- */
-
-/* Homepage Shorts shelf */
 ytd-rich-shelf-renderer[is-shorts],
 ytd-reel-shelf-renderer {
   display: none !important;
 }
 
-/* Sidebar "Shorts" link */
 ytd-guide-entry-renderer:has(a[title="Shorts"]),
 ytd-mini-guide-entry-renderer:has(a[title="Shorts"]) {
   display: none !important;
 }
 
-/* Shorts tab on channel pages */
 yt-tab-shape[tab-title="Shorts"] {
   display: none !important;
-}
-
-/* Shorts URL redirect banner if user lands on /shorts/ */
-ytd-reel-video-renderer {
-  /* Don't hide the actual player if someone navigates directly */
 }
