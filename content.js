@@ -20,10 +20,13 @@
     "ytd-video-renderer",
     "ytd-rich-item-renderer",
     "ytd-compact-video-renderer",
+    "ytd-lockup-view-model",
   ];
 
   let enabled = true;
   let observer = null;
+  let debounceTimer = null;
+  let isProcessing = false;
 
   function hideElement(el) {
     if (!el || el.getAttribute(PROCESSED_ATTR)) return;
@@ -38,14 +41,14 @@
   }
 
   function isShortsThumbnailLink(el) {
-    const link = el.querySelector(
-      'a#thumbnail[href*="/shorts/"], a.shortsLockupViewModelHostEndpoint[href*="/shorts/"]'
-    );
-    return !!link;
+    return !!el.querySelector('a[href*="/shorts/"]');
   }
 
   function removeShorts() {
-    if (!enabled) return;
+    if (!enabled || isProcessing) return;
+    isProcessing = true;
+
+    if (observer) observer.disconnect();
 
     for (const selector of SHORTS_SELECTORS) {
       try {
@@ -68,6 +71,20 @@
         }
       });
     }
+
+    if (observer) {
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    isProcessing = false;
+  }
+
+  function debouncedRemoveShorts() {
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(removeShorts, 100);
   }
 
   function restoreShorts() {
@@ -77,20 +94,9 @@
   function startObserver() {
     if (observer) return;
 
-    observer = new MutationObserver((mutations) => {
-      if (!enabled) return;
-
-      let shouldScan = false;
-      for (const mutation of mutations) {
-        if (mutation.addedNodes.length > 0) {
-          shouldScan = true;
-          break;
-        }
-      }
-
-      if (shouldScan) {
-        removeShorts();
-      }
+    observer = new MutationObserver(() => {
+      if (!enabled || isProcessing) return;
+      debouncedRemoveShorts();
     });
 
     observer.observe(document.body, {
@@ -132,7 +138,7 @@
   }
 
   document.addEventListener("yt-navigate-finish", () => {
-    if (enabled) removeShorts();
+    if (enabled) debouncedRemoveShorts();
   });
 
   if (document.readyState === "loading") {

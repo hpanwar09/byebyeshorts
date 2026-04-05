@@ -15,3 +15,15 @@ ytd-mini-guide-entry-renderer:has(a[title="Shorts"]) {
 yt-tab-shape[tab-title="Shorts"] {
   display: none !important;
 }
+
+ytd-video-renderer:has(a[href*="/shorts/"]),
+ytd-rich-item-renderer:has(a[href*="/shorts/"]),
+ytd-grid-video-renderer:has(a[href*="/shorts/"]),
+ytd-compact-video-renderer:has(a[href*="/shorts/"]),
+ytd-rich-section-renderer:has(a[href*="/shorts/"]),
+ytd-reel-item-renderer:has(a[href*="/shorts/"]),
+ytd-rich-grid-slim-media:has(a[href*="/shorts/"]),
+ytd-rich-grid-media:has(a[href*="/shorts/"]),
+#contents > grid-shelf-view-model {
+  display: none !important;
+}
