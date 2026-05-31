@@ -27,3 +27,11 @@ ytd-rich-grid-media:has(a[href*="/shorts/"]),
 #contents > grid-shelf-view-model {
   display: none !important;
 }
+
+/* Playables */
+ytd-rich-section-renderer:has(ytd-mini-game-card-view-model),
+ytd-rich-section-renderer:has(a[href="/playables"]),
+ytd-guide-entry-renderer:has(a[href*="/playables"]),
+ytd-mini-guide-entry-renderer:has(a[href*="/playables"]) {
+  display: none !important;
+}
