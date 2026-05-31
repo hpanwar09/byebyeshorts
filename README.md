@@ -1,6 +1,6 @@
 # ByeByeShorts
 
-Chrome extension that removes YouTube Shorts from your feed.
+Chrome extension that removes YouTube Shorts and Playables from your feed.
 
 ## Install
 
@@ -11,3 +11,14 @@ Chrome extension that removes YouTube Shorts from your feed.
 5. Open YouTube
 
 Click the extension icon to toggle on/off.
+
+## Development
+
+Auto-reload on file changes:
+
+```
+npm install
+npm run dev
+```
+
+Reload the extension once in `chrome://extensions`, then any file change auto-reloads it.
