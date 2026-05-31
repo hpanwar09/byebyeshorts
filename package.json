@@ -1,0 +1,15 @@
+{
+  "name": "byebyeshorts",
+  "version": "1.0.0",
+  "description": "Chrome extension that removes YouTube Shorts and Playables from your feed.",
+  "main": "content.js",
+  "scripts": {
+    "dev": "node dev.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.21.0"
+  }
+}
