@@ -1,0 +1,32 @@
+reload.js
+  s_8821886e84c0fd::t_d3719d14e67ea7 1-23
+manifest.json
+  s_8821886e84c0fd::t_5160ef547739ec 16-18
+.gitignore
+  s_8821886e84c0fd::t_2e261a40dd708a 1
+dev.js
+  s_8821886e84c0fd::t_06df721a56be29 1-36
+README.md
+  s_8821886e84c0fd::t_91886c2469f1e0 14-19,22-24
+  s_8821886e84c0fd::t_e53050bc7e3091 20-21
+  s_8821886e84c0fd::t_82d4b26fb08039 3
+package.json
+  s_8821886e84c0fd::t_52bb68406c3afa 1-6,8-15
+  s_8821886e84c0fd::t_8e4de758a229ca 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "c6e7d8567d0fa74a39c5db4e5e00bc915361ff6a",
+  "prompts": {},
+  "sessions": {
+    "s_8821886e84c0fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_182759964ffeHy4Tax0t2T8c80",
+        "model": "unknown"
+      },
+      "human_author": "himanshu <139762633+hpanwar09@users.noreply.github.com>"
+    }
+  }
+}
