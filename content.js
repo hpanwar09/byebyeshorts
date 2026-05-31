@@ -13,6 +13,12 @@
     'tp-yt-paper-tab:has(> div:contains("Shorts"))',
     'a[href="/shorts"]',
     'ytd-notification-renderer a[href*="/shorts/"]',
+    // Playables
+    "ytd-rich-section-renderer:has(ytd-mini-game-card-view-model)",
+    'ytd-rich-section-renderer:has(a[href="/playables"])',
+    'ytd-guide-entry-renderer a[title="Playables"]',
+    'ytd-mini-guide-entry-renderer a[title="Playables"]',
+    'a[href="/playables"]',
   ];
 
   const SHORTS_LINK_SELECTORS = [
