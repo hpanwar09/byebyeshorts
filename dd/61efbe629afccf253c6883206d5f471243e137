@@ -1,0 +1,21 @@
+content.js
+  s_8821886e84c0fd::t_b61d9ac9a08eb1 16-21
+styles.css
+  s_8821886e84c0fd::t_f87a8da8682b52 30-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "dd61efbe629afccf253c6883206d5f471243e137",
+  "prompts": {},
+  "sessions": {
+    "s_8821886e84c0fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_182759964ffeHy4Tax0t2T8c80",
+        "model": "unknown"
+      },
+      "human_author": "himanshu <139762633+hpanwar09@users.noreply.github.com>"
+    }
+  }
+}
